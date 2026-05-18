@@ -37,7 +37,7 @@ app.post('/api/policy-chat', async (req, res) => {
   try {
     const { messages } = req.body;
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-5',
+      model: 'claude-sonnet-4-6',
       max_tokens: 1024,
       system: `You are the MT Finance Policy Assistant. Answer questions about lending policy across Bridging, Commercial Mortgages, and Buy-to-Let. Use only the policy corpus below. Cite the section you draw from. If the answer isn't covered, say so plainly.\n\n--- POLICY CORPUS ---\n${policyCorpus}`,
       messages,
@@ -53,7 +53,7 @@ app.post('/api/case-chat', async (req, res) => {
   try {
     const { messages, caseData } = req.body;
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-5',
+      model: 'claude-sonnet-4-6',
       max_tokens: 1024,
       system: `You are the MT Finance Case Helper. You are answering questions about a specific live case. Use the case data and policy corpus below. Be concise and specific. Cite policy sections when relevant.\n\n--- CASE DATA ---\n${JSON.stringify(caseData, null, 2)}\n\n--- POLICY CORPUS ---\n${policyCorpus}`,
       messages,
