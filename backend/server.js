@@ -24,6 +24,15 @@ try {
   policyCorpus = 'Policy corpus not found.';
 }
 
+app.get('/api/health', (_req, res) => {
+  const key = process.env.ANTHROPIC_API_KEY;
+  res.json({
+    status: 'ok',
+    apiKey: key ? `set (starts with ${key.slice(0, 10)}…)` : 'MISSING — add ANTHROPIC_API_KEY in Railway Variables',
+    policyCorpus: policyCorpus.length > 0 ? `loaded (${policyCorpus.length} chars)` : 'missing',
+  });
+});
+
 app.post('/api/policy-chat', async (req, res) => {
   try {
     const { messages } = req.body;
