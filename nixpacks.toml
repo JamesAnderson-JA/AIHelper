@@ -1,5 +1,5 @@
 [phases.install]
-cmds = ["npm ci --prefix backend"]
+cmds = ["npm ci"]
 
 [phases.build]
 cmds = []
