@@ -1,0 +1,8 @@
+[
+  { "ageDays": 9, "what": "Solicitor undertaking outstanding", "who": "Hartfield & Co", "caseId": "MTFCOM18234", "product": "Commercial", "chases": 2, "ageStatus": "red" },
+  { "ageDays": 7, "what": "AST + rent evidence on 27 Belmont Road", "who": "David Pearson, Northbridge", "caseId": "MTFBTL19559", "product": "BTL", "chases": 1, "ageStatus": "amber" },
+  { "ageDays": 5, "what": "Reinspection report", "who": "Allsop Valuers", "caseId": "MTFBR17712", "product": "Bridging", "chases": 0, "ageStatus": "amber" },
+  { "ageDays": 4, "what": "Updated financials for SPV", "who": "Rachel Bennett (Director)", "caseId": "MTFBTL19559", "product": "BTL", "chases": 0, "ageStatus": "grey" },
+  { "ageDays": 3, "what": "Source of deposit confirmation", "who": "Applicant", "caseId": "MTFBTL19560", "product": "BTL", "chases": 0, "ageStatus": "grey" },
+  { "ageDays": 2, "what": "Companies House clarification", "who": "David Pearson, Northbridge", "caseId": "MTFBTL19561", "product": "BTL", "chases": 0, "ageStatus": "grey" }
+]

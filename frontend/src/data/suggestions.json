@@ -1,0 +1,147 @@
+[
+  {
+    "id": "sug_001",
+    "section": "outstanding",
+    "severity": "warning",
+    "confidence": "high",
+    "title": "Companies House verification pending",
+    "description": "SPV identity and director details have not been verified against the register. Hard gate before Offer.",
+    "sourceStage": "Stage 13 — LexisNexis",
+    "evidence": {
+      "rows": [
+        { "label": "Companies House number", "value": "12847362" },
+        { "label": "Verification status", "value": "Not run" }
+      ]
+    },
+    "actions": ["Run check", "Open LexisNexis", "Mark N/A"],
+    "status": "open"
+  },
+  {
+    "id": "sug_002",
+    "section": "outstanding",
+    "severity": "danger",
+    "confidence": "high",
+    "title": "AML screening not yet triggered",
+    "description": "ComplyAdvantage screening is mandatory before progression past FMA stage. This case has not been screened.",
+    "sourceStage": "Stage 13 — LexisNexis",
+    "evidence": {
+      "rows": [
+        { "label": "ComplyAdvantage status", "value": "Not triggered" },
+        { "label": "Policy requirement", "value": "§4.2 — mandatory before progression" }
+      ]
+    },
+    "actions": ["Trigger screening", "View policy", "Mark N/A"],
+    "status": "open"
+  },
+  {
+    "id": "sug_003",
+    "section": "outstanding",
+    "severity": "warning",
+    "confidence": "high",
+    "title": "Director personal credit search not run",
+    "description": "Rachel Bennett's personal credit search consent has been captured but the search has not been triggered.",
+    "sourceStage": "Stage 11 — Credit Search",
+    "evidence": {
+      "rows": [
+        { "label": "Director", "value": "Rachel Bennett" },
+        { "label": "Consent captured", "value": "Yes" },
+        { "label": "Search run", "value": "No" }
+      ]
+    },
+    "actions": ["Run search", "Open credit search", "Mark N/A"],
+    "status": "open"
+  },
+  {
+    "id": "sug_004",
+    "section": "discrepancy",
+    "severity": "danger",
+    "confidence": "high",
+    "title": "Director DOB mismatch",
+    "description": "Rachel Bennett's date of birth differs between the FMA and the Companies House filing. This must be resolved before Offer.",
+    "sourceStage": "Stage 3 — Applicants",
+    "evidence": {
+      "rows": [
+        { "label": "Application (Stage 3)", "value": "14 Mar 1982" },
+        { "label": "Companies House filing", "value": "14 Mar 1983" }
+      ]
+    },
+    "actions": ["Request clarification", "Update application", "Raise exception"],
+    "status": "open"
+  },
+  {
+    "id": "sug_005",
+    "section": "discrepancy",
+    "severity": "warning",
+    "confidence": "medium",
+    "title": "Expected rent may be optimistic",
+    "description": "Stated rent of £1,200/month is above the range of comparable properties. At comparables, ICR falls to 118% — below the 140% threshold.",
+    "sourceStage": "Stage 4 — Income",
+    "evidence": {
+      "rows": [
+        { "label": "Stated rent", "value": "£1,200/month" },
+        { "label": "Comparables range", "value": "£950 – £1,050/month" },
+        { "label": "Stressed ICR (stated)", "value": "142%" },
+        { "label": "Stressed ICR (at £1,000)", "value": "118%" },
+        { "label": "ICR threshold", "value": "140%" }
+      ]
+    },
+    "actions": ["Request AST", "Request valuer rent assessment", "Flag for underwriter"],
+    "status": "open"
+  },
+  {
+    "id": "sug_006",
+    "section": "discrepancy",
+    "severity": "info",
+    "confidence": "low",
+    "title": "Registered office formatting only",
+    "description": "The SPV registered office address differs in formatting between the application and Companies House, but refers to the same property.",
+    "sourceStage": "Stage 3 — Applicants",
+    "evidence": {
+      "rows": [
+        { "label": "As stated on FMA", "value": "47 King St, Worcester WR1 2ND" },
+        { "label": "Companies House", "value": "47 King Street, Worcester, WR1 2ND" }
+      ]
+    },
+    "actions": ["Note discrepancy", "Dismiss"],
+    "status": "open"
+  },
+  {
+    "id": "sug_007",
+    "section": "policy",
+    "severity": "danger",
+    "confidence": "high",
+    "title": "LTV 75.2% exceeds 75% product cap",
+    "description": "The loan-to-value of 75.2% marginally exceeds the 75% maximum for the selected BTL 2-yr Fixed product. A formal exception is required from Senior Underwriter.",
+    "sourceStage": "Stage 2 — Loan",
+    "evidence": {
+      "rows": [
+        { "label": "Loan amount", "value": "£214,200" },
+        { "label": "Estimated value", "value": "£285,000" },
+        { "label": "LTV", "value": "75.2%" },
+        { "label": "Product max LTV", "value": "75%" },
+        { "label": "Exception authority", "value": "Senior Underwriter (§6)" }
+      ]
+    },
+    "actions": ["Log exception", "Request valuation", "View policy"],
+    "status": "open"
+  },
+  {
+    "id": "sug_008",
+    "section": "policy",
+    "severity": "warning",
+    "confidence": "high",
+    "title": "Stressed ICR 142% — tight against 140% threshold",
+    "description": "ICR is within tolerance at stated rent, but would fail if rent falls to comparables level. Within policy at current figures but flagged for underwriter awareness.",
+    "sourceStage": "Stage 4 — Income",
+    "evidence": {
+      "rows": [
+        { "label": "Stressed ICR", "value": "142%" },
+        { "label": "Policy threshold", "value": "140% (SPV — §1.3)" },
+        { "label": "Headroom", "value": "2 percentage points" },
+        { "label": "ICR at comp rent (£1,000)", "value": "118% — would fail" }
+      ]
+    },
+    "actions": ["Note for credit paper", "Flag for underwriter", "View policy"],
+    "status": "open"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "overall": "At watch",
+  "trend": "Down from 'on track' 4 days ago",
+  "dimensions": {
+    "pace": { "label": "Pace", "value": "+3 days vs cohort median", "trend": "worsening", "context": "47 similar BTL SPV cases this year. 68th percentile of slowness." },
+    "activity": { "label": "Activity", "value": "Quiet 5 days", "trend": "slowing", "context": "Last meaningful event 5 days ago. No inbound docs since." },
+    "quality": { "label": "Quality", "value": "3 open · 2 flags", "trend": "stable", "context": "DOB mismatch unresolved 6 days; rent flag pending." },
+    "dependencies": { "label": "Dependencies", "value": "1 chase · 4 days old", "trend": "aging", "context": "AST and rent evidence chased Northbridge 4 days ago. Their median is 2.1 days." }
+  }
+}

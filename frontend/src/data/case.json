@@ -1,0 +1,66 @@
+{
+  "caseId": "MTFBTL19559",
+  "stage": "DIP (Referred)",
+  "currentTask": "Review DIP Referral and Accept/Decline",
+  "workflow": "Buy to Let",
+  "assignedTo": "James Anderson",
+  "dueDate": "2026-05-21",
+  "lockedBy": "David Pearson — Northbridge Specialist Finance Ltd",
+  "applicant": {
+    "type": "SPV (Limited Company)",
+    "name": "Hartwell Properties Ltd",
+    "companiesHouseNumber": "12847362",
+    "incorporated": "2021-08-14",
+    "registeredOffice": {
+      "asStated": "47 King St, Worcester WR1 2ND",
+      "companiesHouse": "47 King Street, Worcester, WR1 2ND"
+    },
+    "directors": [
+      {
+        "name": "Rachel Bennett",
+        "role": "Director",
+        "dobAsStated": "1982-03-14",
+        "dobCompaniesHouse": "1983-03-14",
+        "address": "12 Briar Lane, Pershore WR10 2QY"
+      }
+    ]
+  },
+  "broker": {
+    "firm": "Northbridge Specialist Finance Ltd",
+    "contact": "David Pearson",
+    "email": "d.pearson@northbridgesf.co.uk"
+  },
+  "security": {
+    "address": "27 Belmont Road, Worcester, WR3 8HJ",
+    "type": "Single residential dwelling — let",
+    "tenure": "Freehold",
+    "estimatedValue": 285000,
+    "valuationStatus": "Instructed, not received"
+  },
+  "loan": {
+    "amount": 214200,
+    "ltv": 75.2,
+    "term": 60,
+    "product": "BTL 2-yr Fixed, 75% Max LTV",
+    "purpose": "Purchase",
+    "rate": 5.89
+  },
+  "affordability": {
+    "expectedRentStated": 1200,
+    "expectedRentComparables": [950, 1000, 1050],
+    "stressRate": 7.5,
+    "stressedICRStated": 142,
+    "stressedICRAtCompRent": 118,
+    "icrThreshold": 140
+  },
+  "stagesComplete": [
+    "Pre-Case Eligibility", "Loan", "Applicants", "Income",
+    "Adverse", "Portfolio", "Security Property"
+  ],
+  "stagesPending": [
+    "Criteria Rules", "Product Calculator", "Product",
+    "Credit Search", "Creditsafe", "LexisNexis", "Fees",
+    "Document Checklist", "Documents", "Notes", "Introducer",
+    "Linked Cases", "Credit Paper"
+  ]
+}
