@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:3001';
+const BASE = '';
 
 export async function policyChat(messages) {
   const r = await fetch(`${BASE}/api/policy-chat`, {

@@ -56,5 +56,12 @@ app.post('/api/case-chat', async (req, res) => {
   }
 });
 
+// Serve the built frontend in production
+const distPath = join(__dirname, '../frontend/dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get('*', (_req, res) => res.sendFile(join(distPath, 'index.html')));
+}
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`MT Finance backend on :${PORT}`));
