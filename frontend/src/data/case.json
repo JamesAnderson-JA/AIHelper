@@ -1,7 +1,7 @@
 {
   "caseId": "MTFBTL19559",
-  "stage": "DIP (Referred)",
-  "currentTask": "Review DIP Referral and Accept/Decline",
+  "stage": "FMA",
+  "currentTask": "Underwrite Full Mortgage Application",
   "workflow": "Buy to Let",
   "assignedTo": "James Anderson",
   "dueDate": "2026-05-21",
