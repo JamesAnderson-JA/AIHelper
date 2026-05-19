@@ -60,6 +60,32 @@ export default function SuggestionCard({ suggestion, onAction }) {
     );
   }
 
+  if (status === 'superseded') {
+    return (
+      <div className="rounded-lg px-3 py-2 text-sm" style={{ border: '1px solid #E5E7EB', background: '#F9FAFB' }}>
+        <div className="flex items-center gap-2" style={{ color: '#9CA3AF' }}>
+          <Info size={13} color="#9CA3AF" />
+          <div className="flex-1 min-w-0">
+            <span className="line-through">{title}</span>
+            {suggestion.supersededBy && (
+              <div className="text-xs mt-0.5" style={{ color: '#9CA3AF', fontStyle: 'italic' }}>
+                Superseded by: {suggestion.supersededBy}
+              </div>
+            )}
+          </div>
+          <span className="text-xs mr-2 shrink-0">Superseded</span>
+          <button
+            onClick={() => onAction(suggestion.id, 'reopen')}
+            className="text-xs px-2 py-0.5 rounded border hover:bg-gray-100 shrink-0"
+            style={{ border: '1px solid #D1D5DB', color: '#6B7280' }}
+          >
+            Reopen
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className="rounded-lg transition-all"

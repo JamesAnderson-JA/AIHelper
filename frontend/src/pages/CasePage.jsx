@@ -68,6 +68,15 @@ export default function CasePage() {
     setAuditLog(initialAudit);
   }
 
+  function applySupersession(prev, supersessionMap) {
+    return prev.map(s => {
+      if (s.status !== 'open') return s;
+      const replacedBy = supersessionMap[s.id];
+      if (!replacedBy) return s;
+      return { ...s, status: 'superseded', supersededBy: replacedBy };
+    });
+  }
+
   function handleDocumentUpload(docType) {
     if (docType === 'ast') {
       const newSuggestions = [
@@ -113,7 +122,16 @@ export default function CasePage() {
           status: 'open',
         },
       ];
-      setSuggestions(prev => [...newSuggestions, ...prev]);
+      // sug_003: ICR at stated rent → superseded by confirmed AST rent
+      // sug_006: general RRA 2025 warning → superseded by specific AST compliance issue
+      // sug_008: comp rent warning → superseded by confirmed AST rent
+      const supersessionMap = {
+        sug_003: 'AST confirms rent £1,100/month — ICR fails at 111.9%',
+        sug_006: 'AST predates RRA 2025 — APT transition must be confirmed',
+        sug_008: 'AST confirms rent £1,100/month — ICR fails at 111.9%',
+      };
+      setSuggestions(prev => [...newSuggestions, ...applySupersession(prev, supersessionMap)]);
+      const supersededTitles = Object.keys(supersessionMap);
       setAuditLog(prev => [{
         id: `aud_${Date.now()}`,
         timestamp: new Date().toISOString(),
@@ -121,7 +139,7 @@ export default function CasePage() {
         action: 'Document uploaded',
         target: 'Assured Shorthold Tenancy — 27 Belmont Road (ast.doc)',
         caseId: caseData.caseId,
-        detail: '5 fields extracted. Confirmed rent £1,100/month (below stated £1,200). 2 new suggestions raised: ICR fail at confirmed rent; RRA 2025 APT compliance required.',
+        detail: `5 fields extracted. Confirmed rent £1,100/month (below stated £1,200). 2 new suggestions raised. ${supersededTitles.length} prior suggestions superseded by confirmed data.`,
       }, ...prev]);
     }
 
@@ -190,7 +208,18 @@ export default function CasePage() {
           status: 'open',
         },
       ];
-      setSuggestions(prev => [...newSuggestions, ...prev]);
+      // sug_003: ICR at stated rent → superseded by valuer rent ICR
+      // sug_004: estimated LTV 75.2% → superseded by confirmed LTV 78.8%
+      // sug_007: EPC not on file → superseded by EPC D confirmed
+      // sug_008: comp rent warning → superseded by valuer rent confirmed
+      const supersessionMap = {
+        sug_003: 'Valuer rent £1,050/month — ICR collapses to 106.9%',
+        sug_004: 'Confirmed LTV 78.8% — breach widens materially on RICS value',
+        sug_007: 'EPC rating D confirmed — hard gate, case cannot proceed to Offer',
+        sug_008: 'Valuer rent £1,050/month — ICR collapses to 106.9%',
+      };
+      setSuggestions(prev => [...newSuggestions, ...applySupersession(prev, supersessionMap)]);
+      const supersededTitles = Object.keys(supersessionMap);
       setAuditLog(prev => [{
         id: `aud_${Date.now()}`,
         timestamp: new Date().toISOString(),
@@ -198,7 +227,7 @@ export default function CasePage() {
         action: 'Document uploaded',
         target: 'RICS Valuation Report — 27 Belmont Road (valuation.doc)',
         caseId: caseData.caseId,
-        detail: '6 fields extracted. Market value £272,000 (revised LTV 78.8%). EPC D — hard gate. Valuer rent £1,050/month (ICR 106.9%). 3 new danger suggestions raised.',
+        detail: `6 fields extracted. Market value £272,000 (revised LTV 78.8%). EPC D — hard gate. Valuer rent £1,050/month (ICR 106.9%). 3 new danger suggestions raised. ${supersededTitles.length} prior suggestions superseded by confirmed data.`,
       }, ...prev]);
     }
   }
