@@ -39,7 +39,9 @@ export default function CasePage() {
       if (s.id !== suggId) return s;
       const actionLower = action.toLowerCase();
       let newStatus = s.status;
-      if (actionLower.includes('dismiss') || actionLower.includes('mark n/a') || actionLower.includes('note discrepancy')) {
+      if (actionLower === 'reopen') {
+        newStatus = 'open';
+      } else if (actionLower.includes('dismiss') || actionLower.includes('mark n/a') || actionLower.includes('note discrepancy')) {
         newStatus = 'rejected';
       } else if (['run check', 'trigger screening', 'run search', 'log exception', 'note for credit paper'].some(a => actionLower.includes(a))) {
         newStatus = 'accepted';
@@ -57,6 +59,13 @@ export default function CasePage() {
       detail: `Action "${action}" taken on suggestion.`,
     };
     setAuditLog(prev => [entry, ...prev]);
+  }
+
+  function handleReset() {
+    localStorage.removeItem(SUGG_KEY);
+    localStorage.removeItem(AUDIT_KEY);
+    setSuggestions(initialSuggestions);
+    setAuditLog(initialAudit);
   }
 
   function handleDocumentUpload(docType) {
@@ -247,6 +256,7 @@ export default function CasePage() {
         <HelperPanel
           suggestions={suggestions}
           onAction={handleAction}
+          onReset={handleReset}
           auditLog={auditLog}
           caseData={caseData}
         />

@@ -24,11 +24,18 @@ export default function SuggestionCard({ suggestion, onAction }) {
 
   if (status === 'accepted') {
     return (
-      <div className="rounded-lg px-3 py-2 text-sm opacity-60" style={{ border: '1px solid #E5E7EB', background: '#F9FAFB' }}>
+      <div className="rounded-lg px-3 py-2 text-sm" style={{ border: '1px solid #E5E7EB', background: '#F9FAFB' }}>
         <div className="flex items-center gap-2" style={{ color: '#6B7280' }}>
           <Check size={13} color="#22A06B" />
-          <span className="line-through">{title}</span>
-          <span className="ml-auto text-xs">Accepted</span>
+          <span className="line-through flex-1">{title}</span>
+          <span className="text-xs mr-2">Accepted</span>
+          <button
+            onClick={() => onAction(suggestion.id, 'reopen')}
+            className="text-xs px-2 py-0.5 rounded border hover:bg-gray-100"
+            style={{ border: '1px solid #D1D5DB', color: '#6B7280' }}
+          >
+            Reopen
+          </button>
         </div>
       </div>
     );
@@ -36,11 +43,18 @@ export default function SuggestionCard({ suggestion, onAction }) {
 
   if (status === 'rejected') {
     return (
-      <div className="rounded-lg px-3 py-2 text-sm opacity-60" style={{ border: '1px solid #E5E7EB', background: '#F9FAFB' }}>
+      <div className="rounded-lg px-3 py-2 text-sm" style={{ border: '1px solid #E5E7EB', background: '#F9FAFB' }}>
         <div className="flex items-center gap-2" style={{ color: '#6B7280' }}>
           <X size={13} />
-          <span className="line-through">{title}</span>
-          <span className="ml-auto text-xs">Dismissed</span>
+          <span className="line-through flex-1">{title}</span>
+          <span className="text-xs mr-2">Dismissed</span>
+          <button
+            onClick={() => onAction(suggestion.id, 'reopen')}
+            className="text-xs px-2 py-0.5 rounded border hover:bg-gray-100"
+            style={{ border: '1px solid #D1D5DB', color: '#6B7280' }}
+          >
+            Reopen
+          </button>
         </div>
       </div>
     );

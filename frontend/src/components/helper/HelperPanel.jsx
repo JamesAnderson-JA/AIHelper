@@ -13,7 +13,7 @@ const SECTION_META = {
   policy: { label: 'Policy flags', icon: Flag, color: '#1A2B47' },
 };
 
-export default function HelperPanel({ suggestions, onAction, auditLog, caseData }) {
+export default function HelperPanel({ suggestions, onAction, onReset, auditLog, caseData }) {
   const [tab, setTab] = useState('suggestions');
   const [collapsed, setCollapsed] = useState({});
   const [chatMessages, setChatMessages] = useState([]);
@@ -100,7 +100,15 @@ export default function HelperPanel({ suggestions, onAction, auditLog, caseData 
             </div>
 
             {/* Summary tiles */}
-            <div className="grid grid-cols-3 gap-2 mx-3 mt-3">
+            <div className="grid grid-cols-3 gap-2 mx-3 mt-3" style={{ position: 'relative' }}>
+            <button
+                onClick={onReset}
+                className="absolute -top-5 right-0 text-xs"
+                style={{ color: '#9CA3AF' }}
+                title="Reset demo to initial state"
+              >
+                Reset demo
+              </button>
               {[
                 { label: 'Outstanding', count: outstanding, color: '#854F0B', bg: '#FAEEDA' },
                 { label: 'Discrepancies', count: discrepancies, color: '#791F1F', bg: '#FCEBEB' },
