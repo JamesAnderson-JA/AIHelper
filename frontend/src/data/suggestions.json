@@ -2,146 +2,180 @@
   {
     "id": "sug_001",
     "section": "outstanding",
-    "severity": "warning",
-    "confidence": "high",
-    "title": "Companies House verification pending",
-    "description": "SPV identity and director details have not been verified against the register. Hard gate before Offer.",
-    "sourceStage": "Stage 13 — LexisNexis",
-    "evidence": {
-      "rows": [
-        { "label": "Companies House number", "value": "12847362" },
-        { "label": "Verification status", "value": "Not run" }
-      ]
-    },
-    "actions": ["Run check", "Open LexisNexis", "Mark N/A"],
-    "status": "open"
-  },
-  {
-    "id": "sug_002",
-    "section": "outstanding",
     "severity": "danger",
     "confidence": "high",
-    "title": "AML screening not yet triggered",
-    "description": "ComplyAdvantage screening is mandatory before progression past FMA stage. This case has not been screened.",
+    "title": "AML / ComplyAdvantage screening not triggered",
+    "description": "ComplyAdvantage screening has not been run on any party connected to this application. Under §31.5, sanctions screening is mandatory for all applicants, directors, guarantors, and beneficial owners before the case can progress past FMA stage. A sanctions match is a mandatory decline (Policy Limit *(L)*). PEP status triggers Enhanced Due Diligence and Senior Management sign-off — neither can be obtained if screening has not been run. Separately, §28.9 requires the source of the purchase deposit to be fully evidenced and AML-reviewed before Offer; this cannot be completed without the screening framework being in place. Until ComplyAdvantage returns clear results for Hartwell Properties Ltd, Rachel Bennett (Director/Guarantor), and all beneficial owners, this case is blocked from progression.",
     "sourceStage": "Stage 13 — LexisNexis",
     "evidence": {
       "rows": [
         { "label": "ComplyAdvantage status", "value": "Not triggered" },
-        { "label": "Policy requirement", "value": "§4.2 — mandatory before progression" }
+        { "label": "Parties requiring screening", "value": "Hartwell Properties Ltd; Rachel Bennett (Director / Guarantor)" },
+        { "label": "Policy requirement — sanctions", "value": "§31.5 — mandatory before progression past FMA; sanctions match = decline (L)" },
+        { "label": "Policy requirement — PEP", "value": "§31.5 — PEP requires Enhanced Due Diligence + Senior Management sign-off" },
+        { "label": "Policy requirement — source of deposit", "value": "§28.9 — AML review of deposit source required before Offer" }
       ]
     },
-    "actions": ["Trigger screening", "View policy", "Mark N/A"],
+    "actions": ["Trigger ComplyAdvantage screening", "View §31.5 policy", "View §28.9 policy"],
+    "status": "open"
+  },
+  {
+    "id": "sug_002",
+    "section": "discrepancy",
+    "severity": "danger",
+    "confidence": "high",
+    "title": "Director DOB mismatch — Director's search cannot be relied upon",
+    "description": "Rachel Bennett's date of birth as stated on the Full Mortgage Application (FMA) is 14 March 1982. The Companies House filing for Hartwell Properties Ltd records her DOB as 14 March 1983 — a difference of exactly one year. This is not a formatting discrepancy; it is a data conflict between two primary sources. Under §30.3a, a Director's search must be conducted on each Guarantor before Offer, and the results must positively confirm: (a) no directorship of a company liquidated in the last 3 years, and (b) no current or historical director disqualification. Both conditions are Policy Limits *(L)*. A Director's search result is only reliable if it has been run against the correct identity. While the DOB conflict remains unresolved, it is not possible to confirm the search has matched to the correct individual — meaning the *(L)* gate at §30.3a cannot be cleared. Rachel Bennett must provide documentary evidence of her true date of birth (passport or birth certificate) and the discrepancy must be resolved before any Director's search result can be accepted as satisfying the §30.3a requirement.",
+    "sourceStage": "Stage 3 — Applicants",
+    "evidence": {
+      "rows": [
+        { "label": "DOB on FMA (Stage 3)", "value": "14 March 1982" },
+        { "label": "DOB on Companies House filing", "value": "14 March 1983" },
+        { "label": "Discrepancy", "value": "1 year — data conflict, not formatting" },
+        { "label": "Director's search status", "value": "Not run" },
+        { "label": "Policy gate", "value": "§30.3a — Director's search mandatory per guarantor; no liquidation (last 3 yrs), no disqualification (L)" },
+        { "label": "Implication", "value": "DOB conflict means search results cannot be relied upon to clear the §30.3a (L) gate" }
+      ]
+    },
+    "actions": ["Request passport / birth certificate from Rachel Bennett", "Resolve DOB before running Director's search", "View §30.3a policy"],
     "status": "open"
   },
   {
     "id": "sug_003",
-    "section": "outstanding",
-    "severity": "warning",
+    "section": "policy",
+    "severity": "danger",
     "confidence": "high",
-    "title": "Director personal credit search not run",
-    "description": "Rachel Bennett's personal credit search consent has been captured but the search has not been triggered.",
-    "sourceStage": "Stage 11 — Credit Search",
+    "title": "ICR FAILS at correct stressed rate — Policy Limit breach",
+    "description": "The case has been presented with a stressed ICR of 142% against a threshold of 140%, both calculated using a 7.5% stress rate. This is incorrect. Under §24.2, the minimum stressed interest rate for a fixed-rate product with a term of less than 5 years (which the 2-year Fixed product is) is 5.50% for all borrowers. The exception that permits a 5.00% rate applies only to individual borrowers remortgaging a property they owned personally before 6 April 2017 with no capital raising — this is a purchase application by an SPV, so the exception does not apply. At the correct 5.50% rate, the annual stressed interest cost is £214,200 × 5.50% = £11,781. Against stated monthly rent of £1,200 (£14,400/year), the ICR is £14,400 / £11,781 = 122.2%. The minimum ICR for a Limited Company borrower under §24.1 is 125%. The case fails the ICR test by approximately 2.8 percentage points on the most favourable rental assumption. This is a Policy Limit *(L)* breach — it cannot be approved by a mandate holder alone and requires Credit Committee approval plus relevant Stakeholder sign-off under §14.2.",
+    "sourceStage": "Stage 4 — Income",
     "evidence": {
       "rows": [
-        { "label": "Director", "value": "Rachel Bennett" },
-        { "label": "Consent captured", "value": "Yes" },
-        { "label": "Search run", "value": "No" }
+        { "label": "Loan amount", "value": "£214,200" },
+        { "label": "Product", "value": "2-year Fixed BTL (term < 5 years)" },
+        { "label": "Correct stressed rate (§24.2)", "value": "5.50% — all borrowers on <5-yr fixed, non-historic-owner" },
+        { "label": "Annual stressed interest (£214,200 × 5.50%)", "value": "£11,781" },
+        { "label": "Stated monthly rent", "value": "£1,200/month → £14,400/year" },
+        { "label": "ICR at stated rent / 5.50% stress", "value": "£14,400 / £11,781 = 122.2%" },
+        { "label": "Minimum ICR — Ltd Co borrower (§24.1)", "value": "125%" },
+        { "label": "ICR shortfall", "value": "122.2% vs 125% minimum — FAILS by 2.8pp" },
+        { "label": "Stress rate used in DIP", "value": "7.5% (incorrect — not the policy rate for this product/borrower)" },
+        { "label": "Approval route for Policy Limit breach", "value": "§14.2 — Credit Committee + Stakeholder sign-off required (L)" }
       ]
     },
-    "actions": ["Run search", "Open credit search", "Mark N/A"],
+    "actions": ["Recalculate ICR at 5.50%", "Refer to Credit Committee", "View §24.2 policy", "Request higher rent evidence"],
     "status": "open"
   },
   {
     "id": "sug_004",
-    "section": "discrepancy",
-    "severity": "danger",
-    "confidence": "high",
-    "title": "Director DOB mismatch",
-    "description": "Rachel Bennett's date of birth differs between the FMA and the Companies House filing. This must be resolved before Offer.",
-    "sourceStage": "Stage 3 — Applicants",
-    "evidence": {
-      "rows": [
-        { "label": "Application (Stage 3)", "value": "14 Mar 1982" },
-        { "label": "Companies House filing", "value": "14 Mar 1983" }
-      ]
-    },
-    "actions": ["Request clarification", "Update application", "Raise exception"],
-    "status": "open"
-  },
-  {
-    "id": "sug_005",
-    "section": "discrepancy",
-    "severity": "warning",
-    "confidence": "medium",
-    "title": "Expected rent may be optimistic",
-    "description": "Stated rent of £1,200/month is above the range of comparable properties. At comparables, ICR falls to 118% — below the 140% threshold.",
-    "sourceStage": "Stage 4 — Income",
-    "evidence": {
-      "rows": [
-        { "label": "Stated rent", "value": "£1,200/month" },
-        { "label": "Comparables range", "value": "£950 – £1,050/month" },
-        { "label": "Stressed ICR (stated)", "value": "142%" },
-        { "label": "Stressed ICR (at £1,000)", "value": "118%" },
-        { "label": "ICR threshold", "value": "140%" }
-      ]
-    },
-    "actions": ["Request AST", "Request valuer rent assessment", "Flag for underwriter"],
-    "status": "open"
-  },
-  {
-    "id": "sug_006",
-    "section": "discrepancy",
-    "severity": "info",
-    "confidence": "low",
-    "title": "Registered office formatting only",
-    "description": "The SPV registered office address differs in formatting between the application and Companies House, but refers to the same property.",
-    "sourceStage": "Stage 3 — Applicants",
-    "evidence": {
-      "rows": [
-        { "label": "As stated on FMA", "value": "47 King St, Worcester WR1 2ND" },
-        { "label": "Companies House", "value": "47 King Street, Worcester, WR1 2ND" }
-      ]
-    },
-    "actions": ["Note discrepancy", "Dismiss"],
-    "status": "open"
-  },
-  {
-    "id": "sug_007",
     "section": "policy",
     "severity": "danger",
     "confidence": "high",
-    "title": "LTV 75.2% exceeds 75% product cap",
-    "description": "The loan-to-value of 75.2% marginally exceeds the 75% maximum for the selected BTL 2-yr Fixed product. A formal exception is required from Senior Underwriter.",
+    "title": "LTV 75.2% exceeds 75% product maximum — Policy Limit",
+    "description": "The loan of £214,200 against an estimated property value of £285,000 gives an LTV of 75.2%, which exceeds the 75% maximum LTV for the 2-year Fixed BTL product. Under §21, LTV on a purchase is calculated against the lower of purchase price or valuation — the formal valuation has not yet been received. If the valuer assesses the property at less than £285,000, the LTV breach will widen further. Even at the current estimated value, the LTV is in breach. A reduction of the loan to £213,750 or below (£285,000 × 75%) would bring LTV within the product limit — but given the ICR is already failing (see sug_003), a loan reduction alone does not resolve the case. This is a Policy Limit *(L)* under §22 and §23. Per §14.2, Credit Committee approval and Stakeholder sign-off are required to proceed with a loan above the product's maximum LTV. The case should not proceed to formal valuation instruction until the LTV and ICR positions are addressed.",
     "sourceStage": "Stage 2 — Loan",
     "evidence": {
       "rows": [
         { "label": "Loan amount", "value": "£214,200" },
-        { "label": "Estimated value", "value": "£285,000" },
-        { "label": "LTV", "value": "75.2%" },
-        { "label": "Product max LTV", "value": "75%" },
-        { "label": "Exception authority", "value": "Senior Underwriter (§6)" }
+        { "label": "Estimated value (not yet formally valued)", "value": "£285,000" },
+        { "label": "Current LTV", "value": "£214,200 / £285,000 = 75.2%" },
+        { "label": "Product maximum LTV", "value": "75% (2-yr Fixed BTL)" },
+        { "label": "LTV breach", "value": "0.2pp above product maximum" },
+        { "label": "Loan required for 75% LTV", "value": "£285,000 × 75% = £213,750 (£450 below current loan)" },
+        { "label": "Valuation basis (§21)", "value": "Lower of purchase price or valuation — formal valuation not yet received" },
+        { "label": "Risk if valuation below estimate", "value": "LTV breach will widen if value < £285,000" },
+        { "label": "Policy reference", "value": "§22 loan parameters; §23 obligor exposure and LTV; §14.2 Credit Committee for (L) breaches" }
       ]
     },
-    "actions": ["Log exception", "Request valuation", "View policy"],
+    "actions": ["Review loan amount vs 75% LTV cap", "Instruct valuation", "Refer to Credit Committee", "View §22 / §23 policy"],
+    "status": "open"
+  },
+  {
+    "id": "sug_005",
+    "section": "outstanding",
+    "severity": "warning",
+    "confidence": "medium",
+    "title": "Guarantor shareholding verification required — §30.3a",
+    "description": "Under §30.3a, for a Limited Company borrower: (a) all Shareholders holding ≥25% controlling interest must provide personal guarantees; (b) guarantors must collectively hold an aggregate controlling interest of ≥60%. To date, only Rachel Bennett has been identified as Director and Guarantor. The Companies House confirmation statement for Hartwell Properties Ltd has not yet been reviewed. Until it is reviewed, it is not possible to confirm whether any other shareholders hold ≥25% — if they do, they must also provide personal guarantees before Offer. It is also not possible to confirm the aggregate guarantor controlling interest meets the ≥60% threshold. Both conditions are Policy Limits *(L)* — the case cannot proceed to Offer without them being positively confirmed. Retrieving and reviewing the confirmation statement is an immediate required action.",
+    "sourceStage": "Stage 3 — Applicants",
+    "evidence": {
+      "rows": [
+        { "label": "Company", "value": "Hartwell Properties Ltd" },
+        { "label": "Director / Guarantor identified", "value": "Rachel Bennett" },
+        { "label": "Companies House confirmation statement reviewed", "value": "No — not on file" },
+        { "label": "Other shareholders with ≥25% interest confirmed", "value": "Unknown — confirmation statement not reviewed" },
+        { "label": "Aggregate guarantor controlling interest confirmed ≥60%", "value": "Unknown — confirmation statement not reviewed" },
+        { "label": "Policy requirement (§30.3a)", "value": "All ≥25% shareholders must guarantee; aggregate ≥60% controlling interest required (L)" }
+      ]
+    },
+    "actions": ["Obtain and review Companies House confirmation statement", "Identify all ≥25% shareholders", "Request guarantees from any additional qualifying shareholders", "View §30.3a policy"],
+    "status": "open"
+  },
+  {
+    "id": "sug_006",
+    "section": "outstanding",
+    "severity": "warning",
+    "confidence": "high",
+    "title": "Tenancy documentation must comply with RRA 2025 APT framework",
+    "description": "Under §43 (updated in policy v13, April 2026), from 1 May 2026 Assured Shorthold Tenancies (ASTs) have been replaced by Assured Periodic Tenancies (APT) under the Renters Rights Act 2025 (RRA 2025). This change is already in force — today's date is 19 May 2026. The tenancy documentation for 27 Belmont Road, Worcester has not yet been received. When it is received, it must be reviewed to ensure compliance: if the document is dated on or after 1 May 2026, it must be in APT form under RRA 2025 — a legacy AST template will not be acceptable. If the document is dated before 1 May 2026 (i.e., an existing AST), the underwriter must confirm the tenancy has transitioned to APT status as required by the Act and that no legacy AST-only provisions are being relied upon. Standard AST wording used by many managing agents has not automatically been updated — this is a practical risk. The tenancy document must be specifically checked for RRA 2025 compliance before the case proceeds to Offer.",
+    "sourceStage": "Stage 7 — Security",
+    "evidence": {
+      "rows": [
+        { "label": "RRA 2025 effective date", "value": "1 May 2026 — ASTs replaced by APTs from this date" },
+        { "label": "Today's date", "value": "19 May 2026 — RRA 2025 already in force" },
+        { "label": "Tenancy documentation status", "value": "Not yet received — outstanding from agent" },
+        { "label": "Risk if pre-1 May 2026 document", "value": "Must confirm transition to APT — legacy fixed-term AST clauses no longer enforceable" },
+        { "label": "Risk if post-1 May 2026 document", "value": "Must be drafted as APT under RRA 2025 — standard legacy AST templates not acceptable" },
+        { "label": "Policy reference", "value": "§43 (v13 update, April 2026)" }
+      ]
+    },
+    "actions": ["Chase tenancy documentation", "Review document for RRA 2025 APT compliance", "Confirm transition from AST if pre-1 May 2026", "View §43 policy"],
+    "status": "open"
+  },
+  {
+    "id": "sug_007",
+    "section": "outstanding",
+    "severity": "warning",
+    "confidence": "high",
+    "title": "EPC certificate not on file — hard gate before Offer",
+    "description": "Under §46, all security properties must have a minimum Energy Performance Certificate (EPC) rating of E before MT Finance can issue an Offer. This is a Policy Limit *(L)*. No EPC certificate has been sighted or uploaded for 27 Belmont Road, Worcester. The property cannot proceed to Offer without evidence of at least an E rating. If the EPC is rated F or G, the case must be declined unless the applicant provides a credible, evidenced improvement plan demonstrating the property will be brought to at least E before it is let — and this improvement must be completed and re-certified before drawdown. EPC certificates are valid for 10 years from the date of issue; if an existing certificate is located, its expiry date must be confirmed. Given that the property is a purchase, an EPC should be available from the estate agent particulars or the Energy Performance of Buildings Register. Obtaining and reviewing the EPC is an immediate required action.",
+    "sourceStage": "Stage 7 — Security",
+    "evidence": {
+      "rows": [
+        { "label": "Security property", "value": "27 Belmont Road, Worcester" },
+        { "label": "EPC certificate on file", "value": "No — not sighted" },
+        { "label": "Minimum acceptable EPC rating (§46)", "value": "E (L)" },
+        { "label": "If rated F or G", "value": "Mandatory decline unless evidenced improvement plan to reach E prior to letting (L)" },
+        { "label": "EPC validity period", "value": "10 years from date of issue — expiry date must be confirmed" },
+        { "label": "Source to obtain", "value": "Estate agent particulars; MHCLG Energy Performance of Buildings Register" }
+      ]
+    },
+    "actions": ["Obtain EPC from estate agent", "Check MHCLG EPC Register", "Upload to file", "View §46 policy"],
     "status": "open"
   },
   {
     "id": "sug_008",
-    "section": "policy",
+    "section": "discrepancy",
     "severity": "warning",
     "confidence": "high",
-    "title": "Stressed ICR 142% — tight against 140% threshold",
-    "description": "ICR is within tolerance at stated rent, but would fail if rent falls to comparables level. Within policy at current figures but flagged for underwriter awareness.",
+    "title": "Rent comparables materially below stated figure — ICR fails at comp rent",
+    "description": "The applicant has stated a rental income of £1,200/month. Local market comparables for the area range from £950–£1,050/month — approximately 14–21% below the stated figure. The valuer's market rent assessment (not yet received) will be the authoritative figure under §24.4, and ICR at Offer must use the lower of stated rent and valuer's assessment. The financial impact is significant. At the correct 5.50% stress rate (see sug_003), even the stated rent produces an ICR of 122.2% which already fails the 125% minimum for a Limited Company borrower. If the valuer assesses market rent at the midpoint of comparables (£1,000/month), the ICR falls to (£1,000 × 12) / (£214,200 × 5.50%) = £12,000 / £11,781 = 101.9% — a serious fail, approximately 23 percentage points below the minimum threshold. The case cannot proceed to Offer on current figures. The rental income position must be resolved by the valuer's assessment before any further progression is warranted.",
     "sourceStage": "Stage 4 — Income",
     "evidence": {
       "rows": [
-        { "label": "Stressed ICR", "value": "142%" },
-        { "label": "Policy threshold", "value": "140% (SPV — §1.3)" },
-        { "label": "Headroom", "value": "2 percentage points" },
-        { "label": "ICR at comp rent (£1,000)", "value": "118% — would fail" }
+        { "label": "Stated monthly rent", "value": "£1,200/month" },
+        { "label": "Local comparables range", "value": "£950 – £1,050/month" },
+        { "label": "Comparables midpoint", "value": "£1,000/month" },
+        { "label": "Variance (stated vs comp midpoint)", "value": "£200/month — 20% above comparables" },
+        { "label": "Correct stressed rate (§24.2)", "value": "5.50% (2-yr Fixed, Ltd Co, purchase)" },
+        { "label": "Annual stressed interest (£214,200 × 5.50%)", "value": "£11,781" },
+        { "label": "ICR at stated rent (£1,200/month)", "value": "£14,400 / £11,781 = 122.2% — fails 125% minimum" },
+        { "label": "ICR at comp rent midpoint (£1,000/month)", "value": "£12,000 / £11,781 = 101.9% — seriously fails 125% minimum" },
+        { "label": "Minimum ICR — Ltd Co (§24.1)", "value": "125%" },
+        { "label": "Valuer rent assessment status", "value": "Not yet received — outstanding" },
+        { "label": "Policy — authoritative rent figure", "value": "§24.4 — lower of stated rent or valuer's market rent assessment used at Offer" }
       ]
     },
-    "actions": ["Note for credit paper", "Flag for underwriter", "View policy"],
+    "actions": ["Instruct valuation with market rent assessment", "Do not proceed to Offer before valuer rent confirmed", "View §24.4 policy", "Recalculate ICR when valuer report received"],
     "status": "open"
   }
 ]

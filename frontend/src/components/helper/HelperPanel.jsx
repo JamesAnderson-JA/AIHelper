@@ -91,11 +91,11 @@ export default function HelperPanel({ suggestions, onAction, auditLog, caseData 
           <div className="flex-1 overflow-y-auto">
             {/* Referral callout */}
             <div className="mx-3 mt-3 px-3 py-2 rounded-lg text-xs" style={{ background: '#FAEEDA', border: '1px solid #EF9F27' }}>
-              <div className="font-medium mb-0.5" style={{ color: '#854F0B' }}>Why this was referred</div>
+              <div className="font-medium mb-0.5" style={{ color: '#854F0B' }}>Key underwriting issues</div>
               <div style={{ color: '#854F0B' }}>
-                LTV of 75.2% marginally exceeds the 75% product cap and requires a Senior Underwriter exception.
+                LTV of 75.2% marginally exceeds the 75% product cap and requires a Policy Limit exception.
                 Director DOB mismatch between FMA and Companies House must be resolved before Offer.
-                ICR of 142% is within tolerance but fragile — rent must hold at £1,200.
+                ICR is fragile — stressed at the correct 5.50% rate, case fails 125% minimum even at stated rent.
               </div>
             </div>
 
