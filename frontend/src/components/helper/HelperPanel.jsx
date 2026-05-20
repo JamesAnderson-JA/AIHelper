@@ -100,15 +100,8 @@ export default function HelperPanel({ suggestions, onAction, onReset, auditLog, 
             </div>
 
             {/* Summary tiles */}
-            <div className="grid grid-cols-3 gap-2 mx-3 mt-3" style={{ position: 'relative' }}>
-            <button
-                onClick={onReset}
-                className="absolute -top-5 right-0 text-xs"
-                style={{ color: '#9CA3AF' }}
-                title="Reset demo to initial state"
-              >
-                Reset demo
-              </button>
+            <div className="mx-3 mt-3">
+              <div className="grid grid-cols-3 gap-2">
               {[
                 { label: 'Outstanding', count: outstanding, color: '#854F0B', bg: '#FAEEDA' },
                 { label: 'Discrepancies', count: discrepancies, color: '#791F1F', bg: '#FCEBEB' },
@@ -119,6 +112,16 @@ export default function HelperPanel({ suggestions, onAction, onReset, auditLog, 
                   <div className="text-xs" style={{ color, opacity: 0.8 }}>{label}</div>
                 </div>
               ))}
+              </div>
+              <div className="text-right mt-1">
+                <button
+                  onClick={onReset}
+                  className="text-xs"
+                  style={{ color: '#9CA3AF' }}
+                >
+                  Reset demo
+                </button>
+              </div>
             </div>
 
             {/* Sections */}
