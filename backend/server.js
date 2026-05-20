@@ -1,12 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import Anthropic from '@anthropic-ai/sdk';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-
-dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
