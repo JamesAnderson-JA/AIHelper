@@ -73,4 +73,7 @@ if (fs.existsSync(distPath)) {
 }
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`MT Finance backend on :${PORT}`));
+const server = app.listen(PORT, () => console.log(`MT Finance backend on :${PORT}`));
+
+process.on('SIGTERM', () => server.close(() => process.exit(0)));
+process.on('SIGINT', () => server.close(() => process.exit(0)));
